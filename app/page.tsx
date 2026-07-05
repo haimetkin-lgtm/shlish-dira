@@ -7,7 +7,13 @@ export default function Page() {
   return (
     <main>
       {/* Hero */}
-      <header className="bg-gradient-to-b from-brand-800 to-brand-700 text-white">
+      <header className="bg-gradient-to-b from-brand-800 to-brand-700 text-white relative">
+        <a
+          href="mailto:haimetkin@gmail.com"
+          className="absolute top-4 left-4 text-sm text-brand-100 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-4 py-1.5 transition-colors"
+        >
+          צור קשר ✉
+        </a>
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
           <span className="inline-block text-xs font-medium bg-white/15 rounded-full px-3 py-1 mb-5">
             גרסת ביתא
@@ -167,6 +173,17 @@ export default function Page() {
       <Faq />
 
       <footer className="text-center py-6 text-xs text-gray-400 border-t border-gray-100 px-4 leading-relaxed">
+        <p className="text-sm text-gray-600 mb-3">
+          מאחורי המיזם: <span className="font-bold">חיים אטקין</span>, שמאי מקרקעין ומחבר הספר
+          "בועת נדל"ן" ·{" "}
+          <a href="mailto:haimetkin@gmail.com" className="underline hover:text-brand-600" dir="ltr">
+            haimetkin@gmail.com
+          </a>{" "}
+          ·{" "}
+          <a href="https://www.etkin.co.il" className="underline hover:text-brand-600" dir="ltr">
+            etkin.co.il
+          </a>
+        </p>
         <p className="max-w-2xl mx-auto mb-2">
           האמור באתר אינו מהווה ייעוץ להשקעה ו/או ייעוץ משפטי ו/או ייעוץ בנושאי מס ו/או
           מיסוי ו/או פיננסים, ובוודאי שאינו מהווה תחליף לייעוץ אישי פרטני המותאם לצדדים
