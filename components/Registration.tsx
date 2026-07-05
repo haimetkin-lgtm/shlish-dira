@@ -56,46 +56,23 @@ export default function Registration() {
       setStatus("error");
       return;
     }
-    setStatus("sending");
-
-    let savedId: string | null = null;
-
-    // ערוץ ראשי כרגע: הפנייה נשלחת למייל של חיים דרך FormSubmit.
-    let emailOk = false;
-    try {
-      const roleLabel = TABS.find((t) => t.role === role)!.label;
-      const res = await fetch("https://formsubmit.co/ajax/374416e47600d3c4c56eea9b4f8b16ba", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `פנייה חדשה בויאז'ה ישראלית: ${roleLabel}`,
-          _template: "table",
-          "סוג פנייה": roleLabel,
-          ...form,
-          ...(role !== "lawyer" ? { "מעוניין בשמאות": wantsAppraisal ? "כן" : "לא" } : {}),
-        }),
-      });
-      emailOk = res.ok;
-    } catch {
-      emailOk = false;
-    }
-
-    // ערוץ שני, כשיחובר: שמירה במסד הנתונים עבור מסכי האדמין.
-    if (supabase) {
-      const { data } = await supabase
-        .from("leads")
-        .insert({ role, details: { ...form, wantsAppraisal } })
-        .select("id")
-        .single();
-      if (data) savedId = data.id;
-    }
-
-    if (!emailOk && !savedId) {
-      setErrorMsg("שגיאה בשליחה, נסו שוב בעוד רגע.");
+    if (!supabase) {
+      setErrorMsg("ההרשמה עדיין לא פעילה בגרסת הביתא. אפשר לפנות ישירות בטלפון או במייל.");
       setStatus("error");
       return;
     }
-    setRefId(savedId || crypto.randomUUID());
+    setStatus("sending");
+    const { data, error } = await supabase
+      .from("leads")
+      .insert({ role, details: { ...form, wantsAppraisal } })
+      .select("id")
+      .single();
+    if (error) {
+      setErrorMsg("שגיאה בשמירה, נסו שוב בעוד רגע.");
+      setStatus("error");
+      return;
+    }
+    setRefId(data.id);
     setStatus("done");
   };
 
