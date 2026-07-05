@@ -17,7 +17,8 @@ const TABS: { role: Role; label: string; icon: React.ReactNode; blurb: string }[
     role: "buyer",
     label: "אני רוצה להשקיע",
     icon: <TrendingUp size={20} />,
-    blurb: "רכישת שליש דירה בהנחה עמוקה, בלי לפגוע במעמד דירה יחידה שלכם.",
+    blurb:
+      "רכישת שליש דירה בהנחה עמוקה. אין לכם דירה? כמעט אפס מס רכישה, וההטבות לדירה הראשונה שלכם נשמרות. יש לכם דירה? מעמד הדירה היחידה שלה לא נפגע.",
   },
   {
     role: "lawyer",

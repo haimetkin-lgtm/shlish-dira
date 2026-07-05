@@ -127,6 +127,36 @@ export default function Page() {
               </div>
             ))}
           </div>
+
+          {/* יתרון המס של שליש בדיוק */}
+          <div className="mt-8 bg-brand-800 text-white rounded-2xl p-6 sm:p-8">
+            <h3 className="text-xl font-bold mb-1 text-center">למה בדיוק שליש? כי כך קבע המחוקק</h3>
+            <p className="text-brand-100 text-sm text-center mb-6 max-w-2xl mx-auto">
+              בעלות בעד שליש דירה אינה נחשבת "דירה נוספת" בחוק מיסוי מקרקעין. מזה נגזרות
+              שתי הטבות אמיתיות לרוכש:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+              <div className="bg-white/10 rounded-xl p-5">
+                <div className="font-bold text-gold-500 mb-2">אין לכם דירה? כמעט אפס מס רכישה</div>
+                <p className="text-brand-100 leading-relaxed">
+                  מי שאין בבעלותו דירה נהנה ממדרגות "דירה יחידה" גם ברכישת שליש: על שליש
+                  בדירה ששווה עד כשני מיליון ש"ח, מס הרכישה בפועל הוא אפס. דרך כניסה לנדל"ן
+                  לצעירים ולהורים שקונים עבור ילד, בלי לשרוף את ההטבות לדירת החיים שלהם.
+                </p>
+              </div>
+              <div className="bg-white/10 rounded-xl p-5">
+                <div className="font-bold text-gold-500 mb-2">יש לכם דירה? המעמד שלה נשמר</div>
+                <p className="text-brand-100 leading-relaxed">
+                  השליש לא נחשב דירה נוספת: דירתכם הפרטית נשארת "דירה יחידה", עם פטור ממס
+                  שבח במכירתה ומדרגות מוזלות בקניית דירה חליפית. מי שקונה דירה שנייה שלמה
+                  מאבד את שתי ההטבות האלה. (על השליש עצמו משולם מס רכישה של דירה נוספת.)
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-brand-100/70 text-center mt-5">
+              האמור אינו ייעוץ מס. כל עסקה מלווה בבדיקת מיסוי פרטנית.
+            </p>
+          </div>
         </div>
       </section>
 
