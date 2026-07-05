@@ -12,6 +12,9 @@ export default function Page() {
           <span className="inline-block text-xs font-medium bg-white/15 rounded-full px-3 py-1 mb-5">
             גרסת ביתא
           </span>
+          <div className="text-gold-500 font-bold text-lg mb-2 tracking-wide">
+            ויאז'ה ישראלית <span className="text-brand-100 font-normal">· מודל שליש דירה</span>
+          </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
             מוכרים שליש.
             <br />
@@ -136,7 +139,10 @@ export default function Page() {
           האמור באתר אינו ייעוץ משפטי, מיסויי או פיננסי ואינו תחליף לייעוץ פרטני.
           כל עסקה מותנית בשומה, בבדיקה משפטית ובייצוג נפרד לכל צד.
         </p>
-        <p>© {new Date().getFullYear()} שליש דירה · חיים אטקין, שמאות מקרקעין · כל הזכויות שמורות · גרסת ביתא</p>
+        <p>
+          © {new Date().getFullYear()} ויאז'ה ישראלית · מודל שליש דירה · חיים אטקין, שמאות מקרקעין ·{" "}
+          <span dir="ltr">viager.co.il</span> · כל הזכויות שמורות · גרסת ביתא
+        </p>
       </footer>
     </main>
   );
