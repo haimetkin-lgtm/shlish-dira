@@ -64,7 +64,7 @@ export default function Registration() {
     let emailOk = false;
     try {
       const roleLabel = TABS.find((t) => t.role === role)!.label;
-      const res = await fetch("https://formsubmit.co/ajax/haimetkin@gmail.com", {
+      const res = await fetch("https://formsubmit.co/ajax/374416e47600d3c4c56eea9b4f8b16ba", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
