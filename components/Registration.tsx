@@ -124,22 +124,22 @@ export default function Registration() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">שם מלא *</label>
-                  <input className={inputCls} value={form.name || ""} onChange={set("name")} />
+                  <input className={inputCls} name="name" autoComplete="name" value={form.name || ""} onChange={set("name")} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">טלפון *</label>
-                  <input className={inputCls} dir="ltr" value={form.phone || ""} onChange={set("phone")} />
+                  <input className={inputCls} dir="ltr" type="tel" name="phone" autoComplete="tel" value={form.phone || ""} onChange={set("phone")} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">אימייל</label>
-                  <input className={inputCls} dir="ltr" type="email" value={form.email || ""} onChange={set("email")} />
+                  <input className={inputCls} dir="ltr" type="email" name="email" autoComplete="email" value={form.email || ""} onChange={set("email")} />
                 </div>
 
                 {role === "seller" && (
                   <>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">עיר הנכס</label>
-                      <input className={inputCls} value={form.city || ""} onChange={set("city")} />
+                      <input className={inputCls} name="city" autoComplete="address-level2" value={form.city || ""} onChange={set("city")} />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">גיל</label>
