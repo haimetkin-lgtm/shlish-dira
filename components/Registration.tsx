@@ -62,17 +62,17 @@ export default function Registration() {
       return;
     }
     setStatus("sending");
-    const { data, error } = await supabase
+    // המזהה נוצר כאן ולא נקרא בחזרה מהשרת: לציבור יש הרשאת הוספה בלבד, בלי קריאה.
+    const id = crypto.randomUUID();
+    const { error } = await supabase
       .from("leads")
-      .insert({ role, details: { ...form, wantsAppraisal } })
-      .select("id")
-      .single();
+      .insert({ id, role, details: { ...form, wantsAppraisal } });
     if (error) {
       setErrorMsg("שגיאה בשמירה, נסו שוב בעוד רגע.");
       setStatus("error");
       return;
     }
-    setRefId(data.id);
+    setRefId(id);
     setStatus("done");
   };
 
