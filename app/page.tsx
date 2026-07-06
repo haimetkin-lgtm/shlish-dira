@@ -90,11 +90,11 @@ export default function Page() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brand-800 mb-2">
-            הפתרון: מוכרים שליש בדיוק
+            הפתרון: מוכרים רק חלק מהדירה ולא יותר משליש
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            לא במקרה שליש. זהו הרף שקבע המחוקק: בעלות בעד שליש דירה אינה נחשבת דירה נוספת,
-            ולכן העסקה משתלמת גם לרוכש. וכך זה עובד:
+            לא במקרה לא יותר משליש. זהו הרף שקבע המחוקק: בעלות בעד שליש דירה אינה נחשבת
+            דירה נוספת, ולכן העסקה משתלמת גם לרוכש. וכך זה עובד:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -136,7 +136,7 @@ export default function Page() {
 
           {/* יתרון המס של שליש בדיוק */}
           <div className="mt-8 bg-brand-800 text-white rounded-2xl p-6 sm:p-8">
-            <h3 className="text-xl font-bold mb-1 text-center">למה בדיוק שליש? כי כך קבע המחוקק</h3>
+            <h3 className="text-xl font-bold mb-1 text-center">למה לא יותר משליש? כי כך קבע המחוקק</h3>
             <p className="text-brand-100 text-sm text-center mb-6 max-w-2xl mx-auto">
               בעלות בעד שליש דירה אינה נחשבת "דירה נוספת" בחוק מיסוי מקרקעין. מזה נגזרות
               שתי הטבות אמיתיות לרוכש:
