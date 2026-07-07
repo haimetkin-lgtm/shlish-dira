@@ -11,7 +11,7 @@ const TABS: { role: Role; label: string; icon: React.ReactNode; blurb: string }[
     role: "seller",
     label: "יש לי דירה",
     icon: <Home size={20} />,
-    blurb: "בני 60 ומעלה עם דירה בבעלות, שרוצים הכנסה בלי לוותר על הבית ובלי חוב תופח.",
+    blurb: "בני 60 ומעלה עם דירה בבעלות, שרוצים נזילות מהדירה בלי לעזוב את הבית ובלי לקחת הלוואה.",
   },
   {
     role: "buyer",
@@ -199,7 +199,7 @@ export default function Registration() {
                     onChange={(e) => setWantsAppraisal(e.target.checked)}
                     className="w-4 h-4 accent-brand-600"
                   />
-                  מעוניין/ת בשומת מקרקעין ותמחור אקטוארי של השליש (שירות בתשלום)
+                  מעוניין/ת בשומת מקרקעין ותמחור אקטוארי (שירות בתשלום; ההרשמה עצמה אינה מחייבת)
                 </label>
               )}
 

@@ -61,7 +61,8 @@ export default function Calculator() {
         </h2>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
           שני המסלולים נותנים אותו סכום מזומן היום. ההבדל הוא מה יישאר לילדים.
-          במשכנתא הפוכה החוב תופח בריבית דריבית. במכירת שליש, שני שליש נשארים לירושה, לנצח.
+          במשכנתא הפוכה החוב תופח בריבית דריבית. במכירת שליש, שני שלישים לפחות אינם
+          נמכרים ונשארים בבעלות המוכר.
         </p>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
