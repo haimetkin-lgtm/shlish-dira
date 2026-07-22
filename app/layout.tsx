@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     siteName: "ויאז'ה ישראלית",
     locale: "he_IL",
     type: "website",
+    images: [{ url: "/og.jpg", width: 1200, height: 849, alt: "ויאז'ה ישראלית, מודל שליש דירה" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og.jpg"],
   },
 };
 
