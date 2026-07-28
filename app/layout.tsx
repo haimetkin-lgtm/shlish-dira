@@ -193,6 +193,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={heebo.className}>
         {children}
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8T6LH2HKQW"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8T6LH2HKQW');`}
+        </Script>
         <Script
           src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
           strategy="afterInteractive"
