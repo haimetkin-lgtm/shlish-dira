@@ -72,6 +72,14 @@ export default function Registration() {
       setStatus("error");
       return;
     }
+    // מדידת ליד ב-Google Analytics. ללא פרטים מזהים, רק סוג הפנייה.
+    if (typeof window !== "undefined" && typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        lead_type: role,
+        wants_appraisal: wantsAppraisal,
+      });
+    }
+
     setRefId(id);
     setStatus("done");
   };
