@@ -1,6 +1,7 @@
 import { ShieldCheck, Coins, Users, FileSignature, Handshake, Landmark, ScrollText } from "lucide-react";
 import Calculator from "@/components/Calculator";
 import Registration from "@/components/Registration";
+import Consultation from "@/components/Consultation";
 import Faq from "@/components/Faq";
 
 export default function Page() {
@@ -174,6 +175,7 @@ export default function Page() {
 
       <Calculator />
       <Registration />
+      <Consultation />
       <Faq />
 
       <footer className="text-center py-6 text-xs text-gray-400 border-t border-gray-100 px-4 leading-relaxed">
