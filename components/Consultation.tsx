@@ -57,10 +57,11 @@ export default function Consultation() {
               onClick={goToPayment}
               className="w-full sm:w-auto bg-gold-500 hover:bg-gold-600 text-white font-bold rounded-xl px-8 py-3.5 text-lg transition-colors shadow-sm"
             >
-              לתיאום שיחת ייעוץ · {CONSULTATION_PRICE} ₪
+              לשיחת התייעצות עם חיים אטקין
             </button>
-            <p className="text-xs text-gray-400">
-              תשלום מאובטח בכרטיס אשראי · מיד לאחר התשלום תועברו לתיאום השיחה בוואטסאפ
+            <p className="text-sm text-gray-600">
+              <span className="font-bold text-gray-800">{CONSULTATION_PRICE} ₪</span> · תשלום
+              מאובטח בכרטיס אשראי · מיד לאחר התשלום עוברים לתיאום השיחה בוואטסאפ
             </p>
           </div>
 
