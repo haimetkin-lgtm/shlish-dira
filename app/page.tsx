@@ -2,6 +2,7 @@ import { ShieldCheck, Coins, Users, FileSignature, Handshake, Landmark, ScrollTe
 import Calculator from "@/components/Calculator";
 import Registration from "@/components/Registration";
 import Consultation from "@/components/Consultation";
+import Properties from "@/components/Properties";
 import Faq from "@/components/Faq";
 
 export default function Page() {
@@ -32,6 +33,7 @@ export default function Page() {
             ממשיכים לגור בבית לכל החיים עם זכות רשומה בטאבו, ולפחות שני שלישים
             נשארים בבעלותכם. בלי הלוואה, בלי ריבית, בלי חוב שתופח.
           </p>
+          <Properties />
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="#calculator"
