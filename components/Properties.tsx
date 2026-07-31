@@ -76,9 +76,6 @@ export default function Properties() {
           </button>
         ))}
       </div>
-      <p className="text-xs text-brand-100/80 text-center mt-2">
-        לפרטים ותיאום ביקור: תשלום דמי רצינות בסך {SERIOUSNESS_FEE} ₪
-      </p>
     </div>
   );
 }
