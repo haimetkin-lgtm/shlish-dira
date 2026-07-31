@@ -6,36 +6,45 @@ import { supabase } from "@/lib/supabase";
 import { SERIOUSNESS_FEE } from "@/components/Properties";
 
 const WHATSAPP_NUMBER = "972523728828";
+const CONTACT_API_URL = "https://insure.co.il/api/viager/property-contact";
 
 type Property = { city: string; street: string };
 
 export default function PropertySuccess() {
   const [property, setProperty] = useState<Property | null>(null);
+  const [contactDetails, setContactDetails] = useState("");
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const id = new URLSearchParams(window.location.search).get("id");
-    if (!id || !supabase) {
+    if (!id) {
       setLoaded(true);
       return;
     }
-    supabase
-      .from("properties")
-      .select("city, street")
-      .eq("id", id)
-      .single()
-      .then(({ data }) => {
-        setProperty((data as Property) ?? null);
-        setLoaded(true);
-        if (typeof window.gtag === "function") {
-          window.gtag("event", "purchase", {
-            item_name: "דמי רצינות - נכס",
-            value: SERIOUSNESS_FEE,
-            currency: "ILS",
-            property_id: id,
-          });
-        }
-      });
+
+    const loadProperty = supabase
+      ? supabase.from("properties").select("city, street").eq("id", id).single()
+      : Promise.resolve({ data: null });
+
+    // פרטי הקשר (כתובת מלאה, שמות, טלפונים) לא נשמרים בטבלה הפומבית,
+    // ומגיעים אך ורק דרך שרת אינשור, לנכס הספציפי הזה בלבד.
+    const loadContact = fetch(`${CONTACT_API_URL}?id=${encodeURIComponent(id)}`)
+      .then((r) => (r.ok ? r.json() : { contact_details: "" }))
+      .catch(() => ({ contact_details: "" }));
+
+    Promise.all([loadProperty, loadContact]).then(([propResult, contactResult]) => {
+      setProperty((propResult.data as Property) ?? null);
+      setContactDetails(contactResult.contact_details || "");
+      setLoaded(true);
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "purchase", {
+          item_name: "דמי רצינות - נכס",
+          value: SERIOUSNESS_FEE,
+          currency: "ILS",
+          property_id: id,
+        });
+      }
+    });
   }, []);
 
   const message = property
@@ -55,17 +64,36 @@ export default function PropertySuccess() {
           התשלום התקבל, תודה!
         </h1>
 
-        <p className="text-gray-600 leading-relaxed mb-7">
-          {property ? (
-            <>
-              נותר צעד אחד לתיאום ביקור בנכס{" "}
-              <span className="font-bold">ב{property.city}, {property.street}</span>: שלחו
-              לחיים הודעת וואטסאפ, וההודעה כבר מוכנה עבורכם.
-            </>
-          ) : (
-            "נותר צעד אחד לתיאום הביקור: שלחו לחיים הודעת וואטסאפ, וההודעה כבר מוכנה עבורכם."
-          )}
-        </p>
+        {contactDetails ? (
+          <>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              הנה פרטי הנכס ופרטי הקשר לתיאום ביקור:
+            </p>
+            <div
+              dir="auto"
+              className="bg-brand-50 border border-brand-100 rounded-xl p-4 text-right text-gray-800 whitespace-pre-line mb-6"
+            >
+              {contactDetails}
+            </div>
+            <p className="text-sm text-gray-500 mb-4">
+              שאלות נוספות או רוצים שנעזור בתיאום? אנחנו כאן:
+            </p>
+          </>
+        ) : (
+          <p className="text-gray-600 leading-relaxed mb-7">
+            {property ? (
+              <>
+                נותר צעד אחד לתיאום ביקור בנכס{" "}
+                <span className="font-bold">
+                  ב{property.city}, {property.street}
+                </span>
+                : שלחו לחיים הודעת וואטסאפ, וההודעה כבר מוכנה עבורכם.
+              </>
+            ) : (
+              "נותר צעד אחד לתיאום הביקור: שלחו לחיים הודעת וואטסאפ, וההודעה כבר מוכנה עבורכם."
+            )}
+          </p>
+        )}
 
         <a
           href={waLink}

@@ -17,3 +17,15 @@ alter table properties enable row level security;
 -- הוספה ועדכון סטטוס נעשים רק מהאדמין, עם מפתח שירות שעוקף RLS.
 create policy "public read" on properties
   for select using (true);
+
+-- פרטי הקשר של בעלי הנכס (כתובת מלאה, שמות, טלפונים) יושבים בטבלה נפרדת
+-- ובכוונה בלי שום policy: הציבור לא יכול לקרוא ממנה בכלל, גם לא עם המפתח
+-- הפומבי של האתר. הם נחשפים רק דרך שרת אינשור, לנכס ספציפי אחד בכל פעם.
+create table if not exists property_contacts (
+  property_id uuid primary key references properties(id) on delete cascade,
+  contact_details text not null default '',
+  updated_at timestamptz not null default now()
+);
+
+alter table property_contacts enable row level security;
+-- אין policy בכוונה: אף אחד עם המפתח הפומבי לא יכול לקרוא את הטבלה הזו.
