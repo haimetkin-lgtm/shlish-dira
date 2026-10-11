@@ -3,6 +3,7 @@ import Calculator from "@/components/Calculator";
 import Registration from "@/components/Registration";
 import Consultation from "@/components/Consultation";
 import Properties from "@/components/Properties";
+import { distressedFont } from "@/lib/fonts";
 import Faq from "@/components/Faq";
 
 export default function Page() {
@@ -54,8 +55,25 @@ export default function Page() {
       {/* הבעיה */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-brand-800 mb-2">
-            למה לא משכנתא הפוכה?
+          <h2 className="text-3xl font-bold text-center text-brand-800 mb-10">
+            למה{" "}
+            <span className="relative inline-block mx-2 align-middle -rotate-6">
+              <span
+                className={`${distressedFont.className} text-6xl sm:text-7xl leading-none text-rose-600`}
+              >
+                לא
+              </span>
+              {/* קו אלכסוני מרוט מתחת למילה */}
+              <span
+                aria-hidden="true"
+                className="absolute -left-3 -right-3 bottom-0 h-2 bg-rose-700 rotate-[-12deg] origin-center"
+                style={{
+                  clipPath:
+                    "polygon(0% 40%, 6% 10%, 13% 55%, 21% 0%, 30% 60%, 39% 15%, 48% 70%, 57% 5%, 66% 55%, 75% 20%, 84% 75%, 92% 10%, 100% 45%, 96% 100%, 88% 60%, 79% 100%, 70% 50%, 61% 95%, 52% 40%, 43% 100%, 34% 55%, 25% 100%, 16% 50%, 8% 95%)",
+                }}
+              />
+            </span>{" "}
+            משכנתא הפוכה?
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
             כמיליון אזרחים ותיקים בישראל, רובם עם דירה אך בלי הכנסה מספקת.
