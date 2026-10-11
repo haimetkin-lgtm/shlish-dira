@@ -57,7 +57,7 @@ export default function Registration() {
       return;
     }
     if (!supabase) {
-      setErrorMsg("ההרשמה עדיין לא פעילה בגרסת הביתא. אפשר לפנות ישירות בטלפון או במייל.");
+      setErrorMsg("ההרשמה אינה זמינה כרגע. אפשר לפנות ישירות בטלפון או במייל.");
       setStatus("error");
       return;
     }

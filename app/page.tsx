@@ -18,9 +18,6 @@ export default function Page() {
           צור קשר ✉
         </a>
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
-          <span className="inline-block text-xs font-medium bg-white/15 rounded-full px-3 py-1 mb-5">
-            גרסת ביתא
-          </span>
           <div className="text-gold-500 font-bold text-lg mb-2 tracking-wide">
             ויאז'ה ישראלית <span className="text-brand-100 font-normal">· מודל שליש דירה</span>
           </div>
@@ -57,20 +54,16 @@ export default function Page() {
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brand-800 mb-10">
             למה{" "}
-            <span className="relative inline-block mx-2 align-middle -rotate-6">
+            <span className="relative inline-block mx-2 align-middle">
               <span
-                className={`${distressedFont.className} text-6xl sm:text-7xl leading-none text-rose-600`}
+                className={`${distressedFont.className} inline-block -rotate-6 text-6xl sm:text-7xl leading-none text-rose-600`}
               >
                 לא
               </span>
-              {/* קו אלכסוני מרוט מתחת למילה */}
+              {/* קו ישר ונקי מתחת למילה (מחוץ להטיה) */}
               <span
                 aria-hidden="true"
-                className="absolute -left-3 -right-3 bottom-0 h-2 bg-rose-700 rotate-[-12deg] origin-center"
-                style={{
-                  clipPath:
-                    "polygon(0% 40%, 6% 10%, 13% 55%, 21% 0%, 30% 60%, 39% 15%, 48% 70%, 57% 5%, 66% 55%, 75% 20%, 84% 75%, 92% 10%, 100% 45%, 96% 100%, 88% 60%, 79% 100%, 70% 50%, 61% 95%, 52% 40%, 43% 100%, 34% 55%, 25% 100%, 16% 50%, 8% 95%)",
-                }}
+                className="absolute inset-x-0 -bottom-1 h-1.5 rounded-full bg-rose-600"
               />
             </span>{" "}
             משכנתא הפוכה?
@@ -111,7 +104,10 @@ export default function Page() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-brand-800 mb-2">
-            הפתרון: מוכרים רק חלק מהדירה ולא יותר משליש
+            הפתרון: מוכרים רק חלק מהדירה ולא יותר משליש{" "}
+            <span className="text-xl font-semibold text-gray-500 block sm:inline">
+              (ניתן למכור גם את כל הדירה כתפוסה במודל ויאז'ה)
+            </span>
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
             למה עד שליש? כי בדיני מיסוי מקרקעין קיימת התייחסות מיוחדת להחזקה של עד שליש
@@ -218,7 +214,12 @@ export default function Page() {
         </p>
         <p>
           © {new Date().getFullYear()} ויאז'ה ישראלית · מודל שליש דירה · חיים אטקין, שמאות מקרקעין ·{" "}
-          <span dir="ltr">viager.co.il</span> · כל הזכויות שמורות · גרסת ביתא
+          <span dir="ltr">viager.co.il</span> · כל הזכויות שמורות
+        </p>
+        <p className="mt-2">
+          <a href="/brokers/" className="underline hover:text-brand-600">
+            למתווכים: פרסום נכסי ויאז'ה בחינם
+          </a>
         </p>
       </footer>
     </main>
