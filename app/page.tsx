@@ -11,12 +11,20 @@ export default function Page() {
     <main>
       {/* Hero */}
       <header className="bg-gradient-to-b from-brand-800 to-brand-700 text-white relative">
-        <a
-          href="mailto:haimetkin@gmail.com"
-          className="absolute top-4 left-4 text-sm text-brand-100 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-4 py-1.5 transition-colors"
-        >
-          צור קשר ✉
-        </a>
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+          <a
+            href="/brokers/"
+            className="text-sm font-bold text-brand-800 bg-gold-500 hover:bg-gold-600 hover:text-white rounded-full px-4 py-1.5 transition-colors"
+          >
+            כניסת מתווכים
+          </a>
+          <a
+            href="mailto:haimetkin@gmail.com"
+            className="text-sm text-brand-100 hover:text-white border border-white/25 hover:border-white/50 rounded-full px-4 py-1.5 transition-colors"
+          >
+            צור קשר ✉
+          </a>
+        </div>
         <div className="max-w-4xl mx-auto px-4 py-20 text-center">
           <div className="text-gold-500 font-bold text-lg mb-2 tracking-wide">
             ויאז'ה ישראלית <span className="text-brand-100 font-normal">· מודל שליש דירה</span>
@@ -60,10 +68,14 @@ export default function Page() {
               >
                 לא
               </span>
-              {/* קו ישר ונקי מתחת למילה (מחוץ להטיה) */}
+              {/* קו אלכסוני וקרוע מתחת למילה (מחוץ להטיית המילה) */}
               <span
                 aria-hidden="true"
-                className="absolute inset-x-0 -bottom-1 h-1.5 rounded-full bg-rose-600"
+                className="absolute -left-4 -right-4 -bottom-2 h-3 bg-rose-600 -rotate-[10deg] origin-center"
+                style={{
+                  clipPath:
+                    "polygon(0% 30%, 4% 5%, 9% 40%, 15% 0%, 21% 35%, 28% 10%, 35% 45%, 42% 5%, 49% 38%, 56% 0%, 63% 32%, 70% 8%, 77% 42%, 84% 3%, 91% 36%, 96% 12%, 100% 40%, 97% 100%, 92% 62%, 86% 95%, 79% 58%, 72% 100%, 65% 66%, 58% 94%, 51% 60%, 44% 100%, 37% 64%, 30% 97%, 23% 58%, 16% 100%, 10% 62%, 5% 92%, 1% 70%)",
+                }}
               />
             </span>{" "}
             משכנתא הפוכה?
@@ -192,6 +204,32 @@ export default function Page() {
       <Calculator />
       <Registration />
       <Consultation />
+
+      {/* למתווכים */}
+      <section id="brokers" className="py-16 bg-brand-800 text-white">
+        <div className="max-w-3xl mx-auto px-4 text-center">
+          <span className="inline-block text-xs font-bold tracking-wide text-gold-500 mb-3">
+            למתווכים
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold leading-snug mb-4">
+            בשעה שהם לוקחים לקשיש את הנכס,
+            <br />
+            אתה מוכר שליש מהנכס, והוא נשאר בבית.
+          </h2>
+          <p className="text-brand-100 leading-relaxed max-w-xl mx-auto mb-7">
+            פרסמו נכסי ויאז'ה בחינם, בחשיפה חלקית בלבד. הפרטים המלאים נמסרים לרוכש רק אחרי תשלום,
+            וכל נכס עובר אישור מקדים. פרסום לנכסי ויאז'ה בלבד: חלק מהדירה (עד שליש) או כל הדירה
+            כתפוסה.
+          </p>
+          <a
+            href="/brokers/"
+            className="inline-block bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg rounded-xl px-8 py-3.5 transition-colors shadow-sm"
+          >
+            כניסת מתווכים והרשמה חינם
+          </a>
+        </div>
+      </section>
+
       <Faq />
 
       <footer className="text-center py-6 text-xs text-gray-400 border-t border-gray-100 px-4 leading-relaxed">
