@@ -212,14 +212,16 @@ export default function Page() {
             למתווכים
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold leading-snug mb-4">
-            בשעה שהם לוקחים לקשיש את הנכס,
+            בשעה שהם &quot;אוכלים&quot; לו את הנכס,
             <br />
-            אתה מוכר שליש מהנכס, והוא נשאר בבית.
+            את/ה מוכר לו שליש מהנכס.
           </h2>
-          <p className="text-brand-100 leading-relaxed max-w-xl mx-auto mb-7">
-            פרסמו נכסי ויאז'ה בחינם, בחשיפה חלקית בלבד. הפרטים המלאים נמסרים לרוכש רק אחרי תשלום,
-            וכל נכס עובר אישור מקדים. פרסום לנכסי ויאז'ה בלבד: חלק מהדירה (עד שליש) או כל הדירה
-            כתפוסה.
+          <p className="text-brand-100 text-lg leading-relaxed max-w-xl mx-auto mb-3">
+            פרסמו נכסי ויאז'ה למכירה ללא תשלום כאלטרנטיבה חכמה, טובה, יעילה, כלכלית, נכונה
+            ותחרותית למשכנתא הפוכה.
+          </p>
+          <p className="text-brand-100/70 text-sm max-w-xl mx-auto mb-7">
+            פרסום לנכסי ויאז'ה בלבד · כל נכס עובר אישור מקדים
           </p>
           <a
             href="/brokers/"
