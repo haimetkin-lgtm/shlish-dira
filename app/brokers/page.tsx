@@ -79,6 +79,16 @@ function AuthForms({ mode, setMode }: { mode: Mode; setMode: (m: Mode) => void }
     setInfo("");
   };
 
+  const googleSignIn = async () => {
+    if (!supabase) return;
+    setError("");
+    const { error: err } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/brokers/` },
+    });
+    if (err) setError("הכניסה עם Google נכשלה: " + err.message);
+  };
+
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!supabase) return;
@@ -193,6 +203,34 @@ function AuthForms({ mode, setMode }: { mode: Mode; setMode: (m: Mode) => void }
           </button>
         </form>
 
+        {(mode === "login" || mode === "register") && (
+          <div className="mt-4">
+            <div className="flex items-center gap-3 text-xs text-gray-400 mb-3">
+              <span className="flex-1 h-px bg-gray-200" />
+              או
+              <span className="flex-1 h-px bg-gray-200" />
+            </div>
+            <button
+              type="button"
+              onClick={googleSignIn}
+              className="w-full flex items-center justify-center gap-2.5 border border-gray-300 hover:bg-gray-50 rounded-xl py-2.5 text-sm font-medium text-gray-700 transition-colors"
+            >
+              <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z" />
+                <path fill="#4285F4" d="M46.1 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.9z" />
+                <path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-2.9-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z" />
+                <path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.1-5.5c-2 1.4-4.6 2.3-8.8 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z" />
+              </svg>
+              {mode === "login" ? "כניסה עם חשבון Google" : "הרשמה עם חשבון Google"}
+            </button>
+            {mode === "register" && (
+              <p className="text-xs text-gray-400 mt-2 text-center">
+                אחרי ההתחברות תתבקשו להשלים טלפון ומספר רישיון תיווך.
+              </p>
+            )}
+          </div>
+        )}
+
         <div className="mt-4 text-center text-sm text-gray-500 space-y-1">
           {mode === "login" && (
             <>
@@ -232,10 +270,11 @@ function Dashboard({ session }: { session: Session }) {
   const [profileState, setProfileState] = useState<"loading" | "missing" | "ready">("loading");
   const [profile, setProfile] = useState<{ full_name: string; verified: boolean } | null>(null);
   const [pf, setPf] = useState({
-    full_name: meta.full_name || "",
+    full_name: meta.full_name || meta.name || "",
     phone: meta.phone || "",
     license: meta.license_number || "",
   });
+  const [pfAgree, setPfAgree] = useState(false);
 
   const [listings, setListings] = useState<Listing[]>([]);
   const [form, setForm] = useState({
@@ -288,6 +327,10 @@ function Dashboard({ session }: { session: Session }) {
     if (!supabase) return;
     if (!pf.full_name.trim() || !pf.phone.trim() || !pf.license.trim()) {
       setError("נא למלא את כל השדות.");
+      return;
+    }
+    if (!pfAgree) {
+      setError("יש לאשר שהפרסום מיועד לנכסי ויאז'ה בלבד.");
       return;
     }
     setBusy(true);
@@ -401,6 +444,10 @@ function Dashboard({ session }: { session: Session }) {
             <input className={inputCls} placeholder="שם מלא" value={pf.full_name} onChange={(e) => setPf({ ...pf, full_name: e.target.value })} />
             <input className={inputCls} dir="ltr" type="tel" placeholder="טלפון נייד" value={pf.phone} onChange={(e) => setPf({ ...pf, phone: e.target.value })} />
             <input className={inputCls} dir="ltr" placeholder="מספר רישיון תיווך" value={pf.license} onChange={(e) => setPf({ ...pf, license: e.target.value })} />
+            <label className="flex items-start gap-2 text-xs text-gray-600 leading-relaxed">
+              <input type="checkbox" checked={pfAgree} onChange={(e) => setPfAgree(e.target.checked)} className="mt-0.5 accent-brand-600" />
+              אני מאשר/ת שאפרסם בזירה נכסי ויאז'ה בלבד (חלק מהדירה עד שליש, או כל הדירה כתפוסה), ושכל פרסום כפוף לאישור מקדים.
+            </label>
             {error && <p className="text-sm text-rose-600">{error}</p>}
             <button disabled={busy} className="w-full bg-brand-600 hover:bg-brand-700 disabled:opacity-60 text-white font-bold rounded-xl py-2.5">
               {busy ? "רגע..." : "שמירה והמשך"}
